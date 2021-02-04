@@ -1,0 +1,52 @@
+@model Students.Models.StudentInfo
+
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h1>Create new Employee</h1>
+
+
+<div class="border container" style="padding: 30px;">
+
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group row">
+
+            <div class="col-6" style="margin-top: 10px;">
+               <label class="control-label">Name</label>
+            </div>
+            <div class="col-6" style="margin-top:10px;">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-6" style="margin-top: 10px;">
+               <label class="control-label">Surname</label>
+            </div>
+            <div class="col-6" style="margin-top:10px;">
+                <input asp-for="Surname" class="form-control" />
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+
+            <div class="col-6" style="margin-top: 10px;">
+               <label class="control-label">Qualification</label>
+            </div>
+            <div class="col-6" style="margin-top:10px;">
+                <input asp-for="Qualification" class="form-control" />
+                <span asp-validation-for="Qualification" class="text-danger"></span>
+            </div>
+
+
+        </div>
+        <div class="col-3" style="margin-top:10px;">
+            <button type="submit" name="Create" class="btn btn-primary">Submit</button>
+            <button type="button" asp-controller="Home" asp-action="Index" class="btn btn-danger">Cancel</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

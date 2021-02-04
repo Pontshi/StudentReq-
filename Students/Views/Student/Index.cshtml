@@ -1,0 +1,57 @@
+@model IEnumerable<Students.Models.StudentInfo>
+
+@{
+ViewData["Title"] = "Index";
+}
+
+<h1>List Of Students</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success text-white">Add Student</a>
+</p>
+
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline" asp-controller="Student" asp-action="Index" method="GET">
+        <input class="form-control mr-sm-2" type="search"  name="searchName" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Student Name</th>
+      <th scope="col">Surname </th>
+      <th scope="col">Qualification</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var item in Model)
+      {
+          <tr>
+
+              <td>
+                  @Html.DisplayFor(modelItem => item.Name)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => item.Surname)
+              </td>
+
+               <td>
+                    @Html.DisplayFor(modelItem => item.Qualification)
+               </td>
+
+            <td >
+                <div class="col-3">
+                    <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-primary" style="margin-bottom:10px;">Edit</a>
+                    
+                </div>
+                <div class="col-3">
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </div>
+            </td>
+
+          </tr>
+      }
+  </tbody>
+</table>
